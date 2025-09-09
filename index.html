@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marksheet Website</title>
+
+  <link rel="stylesheet" href="index.css">
+
+</head>
+<body>
+
+  <div id="main-div">
+
+    <label for="semester-input">Semester: </label>
+    <input id="semester-input" type="number" min="1" max="8" step="1" tabindex="1">
+    <br>
+
+    <label for="reg-number-input">Register Number: </label>
+    <input id="reg-number-input" tabindex="2">
+    <br>
+
+    <button id="load-btn">LOAD</button>
+    
+
+    <table id="table-el">
+      <tr id="subject-head"></tr>
+      <tr id="subject-mark"></tr>
+    </table>
+
+  </div>
+  
+<script src="getSheetData.js" type="text/javascript" defer></script>
+<script src="index.js" type="text/javascript" defer></script>
+
+</body>
+</html>
