@@ -7,35 +7,16 @@ let semesterName = ""
 inputEl.addEventListener("keypress", function(event) {
   if (event.key === "Enter") {
     event.preventDefault()
-    semesterNumber = parseInt(document.getElementById("semester-input").value)
+    semesterNumber = parseInt(semesterInput.value)
     console.log("semester number=", semesterNumber)
-    switch (semesterNumber) {
-      case 1:
-        semesterName = "Semester1"
-        break;
-      case 2:
-        semesterName = "Semester2"
-        break;
-      case 3:
-        semesterName = "Semester3"
-        break;
-      case 4:
-        semesterName = "Semester4"
-        break;
-      case 5:
-        semesterName = "Semester5"
-        break;
-      case 6:
-        semesterName = "Semester6"
-        break;
-      case 7:
-        semesterName = "Semester7"
-        break;
-      case 8:
-        semesterName = "Semester8"
-        break;
+
+    for (i=1; i<9; i++) {
+      if (i === semesterNumber) {
+        semesterName = "Semester" + i
+      }
     }
-    console.log("semester namer=", semesterName)
+    
+    console.log("semester name=", semesterName)
     loadBtn.click()
   }
 })  
