@@ -12,35 +12,68 @@
 
   <div id="main-div">
 
-    <h1>Semester </h1>
+    <h1>MARKSHEET</h1>
 
     <p>Please select semester: </p>
-    <input type="radio" id="sem1" name="semester-number" value="1">
-    <label for="sem1">1</label>
+
+    <label class="container">1
+    <input type="radio" id="sem1" checked="checked" name="semester-number" value="1">
+    <span class="checkmark"></span>
+    </label>
+
+    <label class="container">2
     <input type="radio" id="sem2" name="semester-number" value="2">
-    <label for="sem2">2</label>
+    <span class="checkmark"></span>
+    </label>
+
+    <label class="container">3
     <input type="radio" id="sem3" name="semester-number" value="3">
-    <label for="sem3">3</label>
+    <span class="checkmark"></span>
+    </label>
+
+    <label class="container">4
     <input type="radio" id="sem4" name="semester-number" value="4">
-    <label for="sem4">4</label><br>
+    <span class="checkmark"></span>
+    </label>
+
+    <label class="container">5
     <input type="radio" id="sem5" name="semester-number" value="5">
-    <label for="sem5">5</label>
+    <span class="checkmark"></span>
+    </label>
+
+    <label class="container">6
     <input type="radio" id="sem6" name="semester-number" value="6">
-    <label for="sem6">6</label>
+    <span class="checkmark"></span>
+    </label>
+
+    <label class="container">7
     <input type="radio" id="sem7" name="semester-number" value="7">
-    <label for="sem7">7</label>
+    <span class="checkmark"></span>
+    </label>
+
+    <label class="container">8
     <input type="radio" id="sem8" name="semester-number" value="8">
-    <label for="sem8">8</label><br>
+    <span class="checkmark"></span>
+    </label>
 
     <p>Please select exam: </p>
-    <input type="radio" id="cia1" name="exam-name" value="CIA 1">
-    <label for="cia1">CIA 1</label>
-    <input type="radio" id="cia2" name="exam-name" value="CIA 2">
-    <label for="cia2">CIA 2</label>
-    <input type="radio" id="finals" name="exam-name" value="Finals">
-    <label for="finals">Finals</label><br>
 
-    <button id="sem-enter-btn">ENTER</button>
+    <label class="container">CIA 1
+    <input type="radio" id="cia1" name="exam-name" value="CIA 1">
+    <span class="checkmark"></span>
+    </label>
+
+    <label class="container">CIA 2
+    <input type="radio" id="cia2" name="exam-name" value="CIA 2">
+    <span class="checkmark"></span>
+    </label>
+
+    <label class="container">Finals
+    <input type="radio" id="finals" name="exam-name" value="Finals">
+    <span class="checkmark"></span>
+    </label>
+
+    <button id="sem-enter-btn">SEARCH</button>
 
     <table id="table-el">
       <tr id="subject-head"></tr>
