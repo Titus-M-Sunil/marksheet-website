@@ -1,46 +1,44 @@
-const loadBtn = document.getElementById("load-btn")
-const inputEl = document.getElementById("reg-number-input")
-const semesterInput = document.getElementById("semester-input")
-let semesterNumber = ""
-let semesterName = ""
+let registerNumber = 241160053 // received from login page
+let semesterName = "" // sheetID
+let examName = "" // sheetName
 
-inputEl.addEventListener("keypress", function(event) {
-  if (event.key === "Enter") {
-    event.preventDefault()
-    semesterNumber = parseInt(semesterInput.value)
-    console.log("semester number=", semesterNumber)
+const semEnterBtn = document.getElementById("sem-enter-btn")
+const subjectHead = document.getElementById("subject-head")
+const subjectMark = document.getElementById("subject-mark")
 
-    for (i=1; i<9; i++) {
-      if (i === semesterNumber) {
-        semesterName = "Semester" + i
-      }
-    }
-    
-    console.log("semester name=", semesterName)
-    loadBtn.click()
-  }
-})  
+let sheetIDObject = {
+  sem1 : "1WLP72ra6D-7XtBNG7lM6HUF31xn-l9ceShyXT1fCU6M",
+  sem2 : "1zBgZc9f7oKVj57RO1pLr_A7xrMqbD7gJ",
+  sem3 : "",
+  sem4 : "",
+  sem5 : "",
+  sem6 : "",
+  sem7 : "",
+  sem8 : ""
+}
 
-loadBtn.addEventListener("click", (event) => {
+semEnterBtn.addEventListener("click", (event) => {
+
+  semesterName = sheetIDObject[`sem${document.querySelector('input[name="semester-number"]:checked').value}`]
+  examName = document.querySelector('input[name="exam-name"]:checked').value
+
   const sheetDataHandler = (sheetData) => {
-    //ADD YOUR CODE TO WORK WITH sheetData ARRAY OF OBJECTS HERE    
-    const registerNumber = parseFloat(document.getElementById("reg-number-input").value)
-    const subjectHead = document.getElementById("subject-head")
-    const subjectMark = document.getElementById("subject-mark")
+    console.log(sheetData)
+
+    semesterName = sheetIDObject[`sem${document.querySelector('input[name="semester-number"]:checked').value}`]
+    examName = document.querySelector('input[name="exam-name"]:checked').value
+
     subjectHead.innerHTML = ""
     subjectMark.innerHTML = ""
 
-    console.log("sheet data: ", sheetData);
-    console.log("Register number = ", sheetData[0]['RegisterNo'])
-    console.log("Length = ", Object.keys(sheetData).length)
-
-    const keysArray = Object.keys(sheetData['0']) // ['RegisterNo', 'Math', 'Physics', 'Chemistry']
+    // Headings ['RegisterNo', 'Math', 'Physics', 'Chemistry']
+    let keysArray = Object.keys(sheetData['0']) 
     console.log(keysArray)
-    
+
     let tempVariable = ""
     let index = 0
     for (let i=0; i<Object.keys(sheetData).length; i++) {
-      if (registerNumber === sheetData[i]['RegisterNo']) {
+      if (registerNumber === sheetData[i]['Register Number ']) {
         console.log("success")
         index = i
       } else {
@@ -50,7 +48,7 @@ loadBtn.addEventListener("click", (event) => {
     //-------------------------------------------
     //  Creating table elements from the objects
     //-------------------------------------------
-    for (let i=1; i<keysArray.length; i++) {
+    for (let i=1; i<keysArray.length-1; i++) {
       tempVariable += `
         <th>${keysArray[i]}</th>
       `
@@ -60,30 +58,19 @@ loadBtn.addEventListener("click", (event) => {
     tempVariable = ""
 
     console.log("index=", index)
-    for (let i=1; i<keysArray.length; i++) {
+    for (let i=1; i<keysArray.length-1; i++) {
       tempVariable += `
       <td>${sheetData[index][keysArray[i]]}</td>
       `
       console.log("subject marks=", sheetData[index][keysArray[i]])
     }
     subjectMark.innerHTML += tempVariable
-  };
-
-  // --==== QUERY EXAMPLES ====--
-  // --==== USE LETTERS FOR COLUMN NAMES ====--
-  //  'SELECT A,C,D WHERE D > 150'
-  //  'SELECT * WHERE B = "Potato"'
-  //  'SELECT * WHERE A contains "Jo"'
-  //  'SELECT * WHERE C = "active" AND B contains "Jo"'
-  //  "SELECT * WHERE E > date '2022-07-9' ORDER BY E DESC"
+  }
 
   getSheetData({
-    // sheetID you can find in the URL of your spreadsheet after "spreadsheet/d/"
-    sheetID: "1WLP72ra6D-7XtBNG7lM6HUF31xn-l9ceShyXT1fCU6M",
-    // sheetName is the name of the TAB in your spreadsheet (default is "Sheet1")
-    sheetName: `${semesterName}`,
+    sheetID: `${semesterName}`,
+    sheetName: `${examName}`,
     query: "",
     callback: sheetDataHandler,
-  });
-});
-
+  })
+})

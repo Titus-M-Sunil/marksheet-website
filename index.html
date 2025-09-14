@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Marksheet Website</title>
+  <title>Marksheet Website - Semester Page</title>
 
   <link rel="stylesheet" href="index.css">
 
@@ -12,28 +12,35 @@
 
   <div id="main-div">
 
-    <form>
-      Semester: 
-      <select id="semester-input">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-      </select>
-    </form>
+    <h1>Semester </h1>
 
-    <br>
+    <p>Please select semester: </p>
+    <input type="radio" id="sem1" name="semester-number" value="1">
+    <label for="sem1">1</label>
+    <input type="radio" id="sem2" name="semester-number" value="2">
+    <label for="sem2">2</label>
+    <input type="radio" id="sem3" name="semester-number" value="3">
+    <label for="sem3">3</label>
+    <input type="radio" id="sem4" name="semester-number" value="4">
+    <label for="sem4">4</label><br>
+    <input type="radio" id="sem5" name="semester-number" value="5">
+    <label for="sem5">5</label>
+    <input type="radio" id="sem6" name="semester-number" value="6">
+    <label for="sem6">6</label>
+    <input type="radio" id="sem7" name="semester-number" value="7">
+    <label for="sem7">7</label>
+    <input type="radio" id="sem8" name="semester-number" value="8">
+    <label for="sem8">8</label><br>
 
-    <label for="reg-number-input">Register Number: </label>
-    <input id="reg-number-input">
-    <br>
+    <p>Please select exam: </p>
+    <input type="radio" id="cia1" name="exam-name" value="CIA 1">
+    <label for="cia1">CIA 1</label>
+    <input type="radio" id="cia2" name="exam-name" value="CIA 2">
+    <label for="cia2">CIA 2</label>
+    <input type="radio" id="finals" name="exam-name" value="Finals">
+    <label for="finals">Finals</label><br>
 
-    <button id="load-btn">LOAD</button>
-    
+    <button id="sem-enter-btn">ENTER</button>
 
     <table id="table-el">
       <tr id="subject-head"></tr>
