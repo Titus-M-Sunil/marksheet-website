@@ -1,4 +1,4 @@
-let registerNumber = 241160053 // received from login page
+let registerNumber = 241160004 // received from login page
 let semesterName = "" // sheetID
 let examName = "" // sheetName
 
@@ -24,9 +24,6 @@ semEnterBtn.addEventListener("click", (event) => {
 
   const sheetDataHandler = (sheetData) => {
     console.log(sheetData)
-
-    semesterName = sheetIDObject[`sem${document.querySelector('input[name="semester-number"]:checked').value}`]
-    examName = document.querySelector('input[name="exam-name"]:checked').value
 
     subjectHead.innerHTML = ""
     subjectMark.innerHTML = ""
