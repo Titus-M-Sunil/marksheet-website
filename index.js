@@ -1,10 +1,12 @@
-let registerNumber = 241160004 // received from login page
+let registerNumber = 241160038 // received from login page
 let semesterName = "" // sheetID
 let examName = "" // sheetName
 
 const semEnterBtn = document.getElementById("sem-enter-btn")
-const subjectHead = document.getElementById("subject-head")
-const subjectMark = document.getElementById("subject-mark")
+const tableEl = document.getElementById("table-el")
+const studentDetails = document.getElementById("student-details")
+
+
 
 let sheetIDObject = {
   sem1 : "1WLP72ra6D-7XtBNG7lM6HUF31xn-l9ceShyXT1fCU6M",
@@ -25,8 +27,8 @@ semEnterBtn.addEventListener("click", (event) => {
   const sheetDataHandler = (sheetData) => {
     console.log(sheetData)
 
-    subjectHead.innerHTML = ""
-    subjectMark.innerHTML = ""
+    studentDetails.innerHTML = ""
+    tableEl.innerHTML = ""
 
     // Headings ['RegisterNo', 'Math', 'Physics', 'Chemistry']
     let keysArray = Object.keys(sheetData['0']) 
@@ -45,23 +47,35 @@ semEnterBtn.addEventListener("click", (event) => {
     //-------------------------------------------
     //  Creating table elements from the objects
     //-------------------------------------------
-    for (let i=1; i<keysArray.length-1; i++) {
-      tempVariable += `
-        <th>${keysArray[i]}</th>
-      `
-      console.log("subject head=", keysArray[i])
-    }
-    subjectHead.innerHTML += tempVariable
+   
+    const titleArray = ['Subject', 'Marks']
+
+    tempVariable += `
+    <tr id="subject-head">
+        <th>${titleArray[0]}</th>
+        <th>${titleArray[1]}</th>
+    </tr>
+    `
+    tableEl.innerHTML += tempVariable
     tempVariable = ""
 
-    console.log("index=", index)
-    for (let i=1; i<keysArray.length-1; i++) {
+    for (let i=3; i<keysArray.length-1; i++) {
       tempVariable += `
-      <td>${sheetData[index][keysArray[i]]}</td>
+        <tr class="subject-rows">
+          <td>${keysArray[i]}</td>
+          <td>${sheetData[index][keysArray[i]]}</td>
+        </tr>
       `
-      console.log("subject marks=", sheetData[index][keysArray[i]])
     }
-    subjectMark.innerHTML += tempVariable
+    tableEl.innerHTML += tempVariable
+    tempVariable = ""
+
+    tempVariable += `
+      <p>Register Number: ${registerNumber}</p>
+      <p>Name of Student: ${sheetData[index][keysArray[2]]}</p>
+    `
+    studentDetails.innerHTML += tempVariable
+    tempVariable = ""
   }
 
   getSheetData({
